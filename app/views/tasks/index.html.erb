@@ -1,61 +1,8 @@
-<div class="container-fluid py-5" style="background-color: #ffeaf4;">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card border-4 border-warning shadow-lg" style="background-color: #fff0f5;">
-        <div class="card-body">
-          <h1 class="text-center mb-5 text-warning" style="font-family: 'Brush Script MT', cursive; font-size: 3.5rem; text-shadow: 2px 2px 4px #ffcccc;">
-            ✨🌸 Your Magical Tasks 🌸✨
-          </h1>
+<h1>Here yours Tasks</h1>
+<ul >
+  <% @tasks.each do |task| %>
+  <li><%= link_to task.title, task_path(task) %></li>
+  <% end %>
+</ul>
 
-          <ul class="list-group list-group-flush">
-            <% @tasks.each do |task| %>
-              <li class="list-group-item border-0 mb-3 d-flex align-items-center" style="background-color: #fff0f5;">
-                <span class="fs-1 me-3">🎀</span>
-                <%= link_to task_path(task), class: "btn btn-outline-warning btn-lg flex-grow-1 text-start", style: "border-width: 3px; border-style: dotted;" do %>
-                  <span style="font-family: 'Comic Sans MS', cursive; font-size: 1.2rem;"><%= task.title %></span>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-
-          <div class="text-center mt-5">
-            <%= link_to new_task_path, class: "btn btn-warning btn-lg px-5 py-3", style: "border-radius: 50px; font-size: 1.5rem; box-shadow: 0 0 15px #ffcc00;" do %>
-              <i class="fas fa-magic me-2"></i> Create A New Enchanted Task
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 text-center">
-        <img src="https://example.com/kawaii-unicorn.gif" alt="Kawaii Unicorn" style="max-width: 150px;">
-      </div>
-    </div>
-  </div>
-</div>
-
-<style>
-  body {
-    background-image: url('https://example.com/pastel-pattern.jpg');
-    background-repeat: repeat;
-  }
-  .card {
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before, .card::after {
-    content: '🌈';
-    font-size: 5rem;
-    position: absolute;
-    opacity: 0.2;
-  }
-  .card::before {
-    top: -20px;
-    left: -20px;
-    transform: rotate(-45deg);
-  }
-  .card::after {
-    bottom: -20px;
-    right: -20px;
-    transform: rotate(135deg);
-  }
-</style>
+  <p><%=link_to "Create A New Task", new_task_path%></p>

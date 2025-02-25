@@ -1,51 +1,9 @@
-<div class="container mt-5">
-  <div class="card border-3 border-warning shadow-lg">
-    <div class="card-body">
-      <h1 class="card-title text-center mb-4 text-warning fw-bold" style="font-family: 'Comic Sans MS', cursive;">
-        <i class="fas fa-plus-circle me-2"></i>Add A New Kawaii Task
-      </h1>
-
-      <%= form_with model: @task, class: "needs-validation", novalidate: true do |f| %>
-        <div class="mb-3">
-          <%= f.label :title, class: "form-label fs-5 fw-bold text-warning" %>
-          <%= f.text_field :title, class: "form-control form-control-lg", placeholder: "Enter your cute task title", required: true %>
-          <div class="invalid-feedback">Please provide a kawaii title for your task!</div>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :details, class: "form-label fs-5 fw-bold text-warning" %>
-          <%= f.text_area :details, class: "form-control form-control-lg", rows: 3, placeholder: "Describe your adorable task", required: true %>
-          <div class="invalid-feedback">Don't forget to add some lovely details!</div>
-        </div>
-
-        <div class="d-grid gap-2">
-          <%= f.submit "Create Magical Task ✨", class: "btn btn-warning btn-lg mt-3" %>
-        </div>
-      <% end %>
-
-      <div class="text-center mt-4">
-        <%= link_to tasks_path, class: "btn btn-outline-warning btn-lg" do %>
-          <i class="fas fa-arrow-left me-2"></i>Back to your tasks
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// Bootstrap form validation
-(function () {
-  'use strict'
-  var forms = document.querySelectorAll('.needs-validation')
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-</script>
+<h1>Add A New Task</h1>
+<%= form_with model: @task do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :details %>
+  <%= f.text_field :details %>
+  <%= f.submit %>
+<% end %>
+<p><%=link_to "Back to your tasks", tasks_path%></p>
